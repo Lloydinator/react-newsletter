@@ -1,7 +1,5 @@
-import React from 'react'
 import {Field} from 'formik'
 import styled from '@emotion/styled'
-import breakpoints from '../../utils/styles'
 
 export const FormHolder = styled.div`
     width: 100%;
@@ -19,6 +17,8 @@ export const FormPartialImage = styled.div`
     flex-grow: 1;
     max-width: 150px;
     max-height: 105px;
+    width: 100%;
+    margin-right: 0.5rem;
     & img {
         width: 100%;
         height: 100%;
@@ -27,6 +27,7 @@ export const FormPartialImage = styled.div`
 ` 
 export const FormPartialText = styled.div`
     flex-grow: 2;
+    padding-right: 3rem;
 `
 export const FormPartialCheck = styled.div`
     flex-grow: 0;

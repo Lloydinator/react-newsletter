@@ -8,7 +8,7 @@ import {ListHolder, FormPartial, FormPartialImage,
 import axios from 'axios'
 
 const FormComponent = () => {
-    const [data, setData] = useState({posts: []})
+    const [data, setData] = useState([])
     
     useEffect(() => {
         const fetch = async () => {
@@ -25,7 +25,7 @@ const FormComponent = () => {
     }
     
     const [formValues, setFormValues] = useState()
-
+    console.log(data[0])
     return (
         <Formik
             initialValues={{topics: [], email: ''}}
@@ -45,7 +45,6 @@ const FormComponent = () => {
                     alert('Something went wrong. Please try again.')
                     actions.setSubmitting(false)
                 })
-                console.log(values)
             }}
         >
             {({
@@ -53,32 +52,36 @@ const FormComponent = () => {
             }) => (
                     <FormHolder>
                         <Form
-                        name='newletter'
-                        method='post'
-                        onSubmit={handleSubmit}
+                            name='newletter'
+                            method='post'
+                            onSubmit={handleSubmit}
                         >
                             <ListHolder>
-                                <FormPartial>
-                                    <FormPartialImage>
-                                        <img src={require('../../assets/krabs.PNG')} alt="placeholder" />
-                                    </FormPartialImage>
-                                    <FormPartialText>
-                                        <ParagraphTitle>Hi</ParagraphTitle>
-                                        <Paragraph>Lorem ipsum and whatnot</Paragraph>
-                                    </FormPartialText>
-                                    <FormPartialCheck>
-                                        <label htmlFor="topic">
-                                        <FieldCheckbox 
-                                            name="topic"
-                                            type="checkbox"
-                                            id="topic"
-                                            //checked={field.value}
-                                            //{...field}
-                                        />
-                                        <div></div>
-                                        </label>
-                                    </FormPartialCheck>
-                                </FormPartial>
+                                {data.map(data => (
+                                    <FormPartial key={data.id}>
+                                        <FormPartialImage>
+                                            <img src={require(`../../assets/${data.image}`)} alt="placeholder" />
+                                        </FormPartialImage>
+                                        <FormPartialText>
+                                            <ParagraphTitle>{data.title}</ParagraphTitle>
+                                            <Paragraph>{data.paragraph}</Paragraph>
+                                        </FormPartialText>
+                                        <FormPartialCheck>
+                                            <label htmlFor="topic">
+                                            <FieldCheckbox 
+                                                name="topic"
+                                                type="checkbox"
+                                                id="topic"
+                                                value={data.value}
+                                                //checked={field.value}
+                                                //{...field}
+                                            />
+                                            <div></div>
+                                            </label>
+                                        </FormPartialCheck>
+                                    </FormPartial>
+                                    )) 
+                                }
                             </ListHolder>
                             <EmailCard>
                                 <EmailContainer>

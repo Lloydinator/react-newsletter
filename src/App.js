@@ -1,9 +1,12 @@
 import React from 'react'
-
-function App() {
+import Card from './components/Card'
+import {CardHolder} from './utils/styles'
+const App = () => {
   return (
-    <h1 className="text-lg font-bold">Hello, this is a <span className="text-red-500">MOTHERFUCKING WARNING</span></h1>
-  );
+    <CardHolder>
+      <Card />
+    </CardHolder>
+  )
 }
 
-export default App;
+export default App

@@ -1,3 +1,4 @@
+import React from 'react'
 import {Global, css} from '@emotion/core'
 import styled from '@emotion/styled'
 
@@ -16,7 +17,27 @@ export const GlobalStyles = props => (
         {...props} styles = {css`
             html {
                 font-family: Montserrat, sans-serif;
+                font-size: 16px;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+            body {
+                margin: 0;
+			  -webkit-font-smoothing: antialiased;
+			  -moz-osx-font-smoothing: grayscale;
+            }
+            h1,h2,h3,h4,h5,h6 {
+                font-weight: 500;
             }
         `}
     />
 )
+
+export const CardHolder = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding-top: 106px;
+    padding-bottom: 106px;
+`

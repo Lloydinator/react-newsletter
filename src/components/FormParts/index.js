@@ -3,7 +3,7 @@ import {Formik, Form} from 'formik'
 import {ListHolder, FormPartial, FormPartialImage, 
     FormPartialText, FormPartialCheck, FieldCheckbox, Paragraph,
     ParagraphTitle, EmailCard, EmailContainer, Input, Submit,
-    FormHolder
+    FormHolder, SmallText
 } from './styles'
 import axios from 'axios'
 
@@ -67,24 +67,27 @@ const FormComponent = () => {
                                         <Paragraph>Lorem ipsum and whatnot</Paragraph>
                                     </FormPartialText>
                                     <FormPartialCheck>
+                                        <label htmlFor="topic">
                                         <FieldCheckbox 
                                             name="topic"
                                             type="checkbox"
-                                            render={(field, form) => (
-                                                <input 
-                                                    type="checkbox" 
-                                                    checked={field.value}
-                                                    {...field}
-                                                />
-                                            )}
+                                            id="topic"
+                                            //checked={field.value}
+                                            //{...field}
                                         />
+                                        <div></div>
+                                        </label>
                                     </FormPartialCheck>
                                 </FormPartial>
                             </ListHolder>
                             <EmailCard>
                                 <EmailContainer>
-                                    <Input></Input>
-                                    <Submit>Submit</Submit>
+                                    <Input name="email" type="email" placeholder="Enter email" />
+                                    <Submit>Subscribe</Submit>
+                                    <label htmlFor="subscribe">
+                                        <input name="subscribe" id="subscribe" type="checkbox" />
+                                        <SmallText>I do not want to receive information about future newsletters</SmallText>
+                                    </label>
                                 </EmailContainer>
                             </EmailCard>
                         </Form>  

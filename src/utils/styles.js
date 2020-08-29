@@ -26,6 +26,16 @@ export const GlobalStyles = props => (
 			  -webkit-font-smoothing: antialiased;
 			  -moz-osx-font-smoothing: grayscale;
                 overflow: auto;
+                color: #1f1f27;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            *:before {
+                box-sizing: border-box;
+            }
+            *:after {
+                box-sizing: border-box;
             }
             h1,h2,h3,h4,h5,h6 {
                 font-weight: 500;

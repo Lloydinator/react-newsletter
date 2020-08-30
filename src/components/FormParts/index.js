@@ -86,7 +86,7 @@ const FormComponent = () => {
                             <EmailCard>
                                 <EmailContainer>
                                     <Input name="email" type="email" placeholder="Enter email" />
-                                    <Submit onClick={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Submit'}</Submit>
+                                    <Submit onClick={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Subscribe'}</Submit>
                                     <label htmlFor="subscribe">
                                         <input name="subscribe" id="subscribe" type="checkbox" value="noregister" />
                                         <SmallText>I do not want to receive information about future newsletters</SmallText>

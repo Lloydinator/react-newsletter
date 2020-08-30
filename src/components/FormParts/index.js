@@ -26,7 +26,7 @@ const FormComponent = () => {
     
     return (
         <Formik
-            initialValues={{topics: [], email: ''}}
+            initialValues={{topics: [], email: '', subscribe: ''}}
             onSubmit={(values, actions) => {
                 fetch('/', {
                     method: 'POST',

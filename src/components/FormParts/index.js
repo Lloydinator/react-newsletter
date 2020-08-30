@@ -25,7 +25,6 @@ const FormComponent = () => {
     }
     
     const [formValues, setFormValues] = useState()
-    console.log(data[0])
     return (
         <Formik
             initialValues={{topics: [], email: ''}}
@@ -57,30 +56,32 @@ const FormComponent = () => {
                             onSubmit={handleSubmit}
                         >
                             <ListHolder>
-                                {data.map(data => (
-                                    <FormPartial key={data.id}>
-                                        <FormPartialImage>
-                                            <img src={require(`../../assets/${data.image}`)} alt="placeholder" />
-                                        </FormPartialImage>
-                                        <FormPartialText>
-                                            <ParagraphTitle>{data.title}</ParagraphTitle>
-                                            <Paragraph>{data.paragraph}</Paragraph>
-                                        </FormPartialText>
-                                        <FormPartialCheck>
-                                            <label htmlFor="topic">
-                                            <FieldCheckbox 
-                                                name="topic"
-                                                type="checkbox"
-                                                id="topic"
-                                                value={data.value}
-                                                //checked={field.value}
-                                                //{...field}
-                                            />
-                                            <div></div>
-                                            </label>
-                                        </FormPartialCheck>
-                                    </FormPartial>
-                                    )) 
+                                {data.map(data => {
+                                    return (
+                                        <FormPartial key={data.id}>
+                                            <FormPartialImage>
+                                                <img src={require(`../../assets/${data.image}`)} alt="placeholder" />
+                                            </FormPartialImage>
+                                            <FormPartialText>
+                                                <ParagraphTitle>{data.title}</ParagraphTitle>
+                                                <Paragraph>{data.paragraph}</Paragraph>
+                                            </FormPartialText>
+                                            <FormPartialCheck>
+                                                <label htmlFor={`topic ${data.id}`}>
+                                                <FieldCheckbox 
+                                                    name="topic"
+                                                    type="checkbox"
+                                                    id={`topic ${data.id}`}
+                                                    value={data.value}
+                                                    //checked={data.value}
+                                                    //{...field}
+                                                />
+                                                <div></div>
+                                                </label>
+                                            </FormPartialCheck>
+                                        </FormPartial>
+                                        )
+                                    }) 
                                 }
                             </ListHolder>
                             <EmailCard>

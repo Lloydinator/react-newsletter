@@ -5,7 +5,7 @@ import {Card, Title, SubTitle
 
 const CardComponent = () => (
     <Card>
-        <Title>Newsletter</Title>
+        <Title>Newsletters</Title>
         <SubTitle>Select all the newsletters you'd like to receive</SubTitle>
         <FormComponent />
     </Card>

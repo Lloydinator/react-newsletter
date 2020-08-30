@@ -24,12 +24,10 @@ const FormComponent = () => {
             .join('&');
     }
     
-    const [formValues, setFormValues] = useState()
     return (
         <Formik
             initialValues={{topics: [], email: ''}}
             onSubmit={(values, actions) => {
-                setFormValues(values)
                 fetch('/', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -47,12 +45,14 @@ const FormComponent = () => {
             }}
         >
             {({
-                values, handleSubmit, handChange, isSubmitting
+                values, handleSubmit, form, field, isSubmitting
             }) => (
                     <FormHolder>
                         <Form
                             name='newletter'
                             method='post'
+                            netlify-honeyport='bot-field'
+                            data-netlify='true'
                             onSubmit={handleSubmit}
                         >
                             <ListHolder>
@@ -73,8 +73,7 @@ const FormComponent = () => {
                                                     type="checkbox"
                                                     id={`topic ${data.id}`}
                                                     value={data.value}
-                                                    //checked={data.value}
-                                                    //{...field}
+                                                    {...field}
                                                 />
                                                 <div></div>
                                                 </label>
@@ -87,9 +86,9 @@ const FormComponent = () => {
                             <EmailCard>
                                 <EmailContainer>
                                     <Input name="email" type="email" placeholder="Enter email" />
-                                    <Submit>Subscribe</Submit>
+                                    <Submit onClick={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Submit'}</Submit>
                                     <label htmlFor="subscribe">
-                                        <input name="subscribe" id="subscribe" type="checkbox" />
+                                        <input name="subscribe" id="subscribe" type="checkbox" value="noregister" />
                                         <SmallText>I do not want to receive information about future newsletters</SmallText>
                                     </label>
                                 </EmailContainer>

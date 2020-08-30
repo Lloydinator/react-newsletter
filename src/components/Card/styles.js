@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import breakpoints from '../../utils/styles'
 
 export const Card = styled.div`
     width: 725px;

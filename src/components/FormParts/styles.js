@@ -1,5 +1,6 @@
 import {Field} from 'formik'
 import styled from '@emotion/styled'
+import {breakpoints} from '../../utils/styles'
 
 export const FormHolder = styled.div`
     width: 100%;
@@ -20,14 +21,30 @@ export const FormPartialImage = styled.div`
     width: 100%;
     margin-right: 0.5rem;
     & img {
-        width: 100%;
+        width: 150px;
         height: 100%;
         object-fit: contain;
+    }
+    @media (max-width: ${breakpoints.s}px){
+        & img {
+            width: 100px;
+        }
+    }
+    @media (max-width: ${breakpoints.xs}px){
+        & img {
+            width: 90px;
+        }
     }
 ` 
 export const FormPartialText = styled.div`
     flex-grow: 2;
     padding-right: 3rem;
+    @media (max-width: ${breakpoints.s}px){
+        padding-right: 1rem;
+    }
+    @media (max-width: ${breakpoints.xs}px){
+        padding-right: 0.5rem;
+    }
 `
 export const FormPartialCheck = styled.div`
     flex-grow: 0;
@@ -77,6 +94,15 @@ export const FieldCheckbox = styled(Field)`
     &[type="checkbox"]:checked + div:after {
         opacity: 1;
     }
+    @media (max-width: ${breakpoints.s}px){
+        &[type="checkbox"] + div {
+            width: 2.125rem;
+            height: 2.125rem;
+        }
+        &[type="checkbox"] + div:after {
+            top: 5px;
+            left: 4px;
+    }
 `
 export const EmailCard = styled.div`
     display: flex;
@@ -91,6 +117,9 @@ export const EmailCard = styled.div`
 `
 export const EmailContainer = styled.div`
     width: 60%;
+    @media (max-width: ${breakpoints.s}px){
+        width: 85%;
+    }
 `
 export const Input = styled(Field)`
     background-color: #f5f5f5;
